@@ -1,0 +1,1188 @@
+{
+    "name": "slash",
+    "displayName": "Slash",
+    "description": "A Pulumi package for creating and managing Slash resources.",
+    "keywords": [
+        "pulumi",
+        "slash",
+        "category/cloud",
+        "kind/native"
+    ],
+    "homepage": "https://cloudysky.software",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/dddd4cloud/pulumi-provider-slash",
+    "pluginDownloadURL": "github://api.github.com/dddd4cloud/pulumi-provider-slash",
+    "publisher": "Cloudy Sky Software",
+    "language": {
+        "csharp": {
+            "namespaces": {
+                "": "Provider",
+                "api": "Api",
+                "slash": "SLASH",
+                "subscription/v1": "SubscriptionV1"
+            },
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "rootNamespace": "Pulumi"
+        },
+        "go": {
+            "importBasePath": "github.com/dddd4cloud/pulumi-provider-slash/sdk/go/slash"
+        },
+        "nodejs": {
+            "packageName": "@cloudyskysoftware/pulumi-slash"
+        },
+        "python": {
+            "packageName": "pulumi_slash",
+            "pyproject": {
+                "enabled": true
+            },
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiKey": {
+                "type": "string",
+                "description": "The API key",
+                "language": {
+                    "csharp": {
+                        "name": "ApiKey"
+                    }
+                },
+                "secret": true
+            }
+        }
+    },
+    "types": {
+        "slash:api:Apiv1AutoBackupWorkspaceSetting": {
+            "properties": {
+                "cronExpression": {
+                    "type": "string",
+                    "description": "The cron expression for auto backup.\nFor example, \"0 0 0 * * *\" means backup at 00:00:00 every day.\nSee https://en.wikipedia.org/wiki/Cron for more details."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether auto backup is enabled."
+                },
+                "maxKeep": {
+                    "type": "integer",
+                    "description": "The maximum number of backups to keep."
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1Collection": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortcutIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Apiv1CollectionVisibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1CollectionVisibility": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "VisibilityUnspecified",
+                    "value": "VISIBILITY_UNSPECIFIED"
+                },
+                {
+                    "name": "Private",
+                    "value": "PRIVATE"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "WORKSPACE"
+                },
+                {
+                    "name": "Public",
+                    "value": "PUBLIC"
+                }
+            ]
+        },
+        "slash:api:Apiv1OpenGraphMetadata": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1Shortcut": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ogMetadata": {
+                    "$ref": "#/types/slash:api:Apiv1OpenGraphMetadata"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:Apiv1ShortcutRowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "viewCount": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Apiv1ShortcutVisibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1ShortcutRowStatus": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RowStatusUnspecified",
+                    "value": "ROW_STATUS_UNSPECIFIED"
+                },
+                {
+                    "name": "Normal",
+                    "value": "NORMAL"
+                },
+                {
+                    "name": "Archived",
+                    "value": "ARCHIVED"
+                }
+            ]
+        },
+        "slash:api:Apiv1ShortcutVisibility": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "VisibilityUnspecified",
+                    "value": "VISIBILITY_UNSPECIFIED"
+                },
+                {
+                    "name": "Private",
+                    "value": "PRIVATE"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "WORKSPACE"
+                },
+                {
+                    "name": "Public",
+                    "value": "PUBLIC"
+                }
+            ]
+        },
+        "slash:api:Apiv1UserSetting": {
+            "properties": {
+                "colorTheme": {
+                    "$ref": "#/types/slash:api:Apiv1UserSettingColorTheme",
+                    "default": "COLOR_THEME_UNSPECIFIED"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "id is the user id."
+                },
+                "locale": {
+                    "$ref": "#/types/slash:api:Apiv1UserSettingLocale",
+                    "default": "LOCALE_UNSPECIFIED"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1UserSettingColorTheme": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "ColorThemeUnspecified",
+                    "value": "COLOR_THEME_UNSPECIFIED"
+                },
+                {
+                    "name": "ColorThemeSystem",
+                    "value": "COLOR_THEME_SYSTEM"
+                },
+                {
+                    "name": "ColorThemeLight",
+                    "value": "COLOR_THEME_LIGHT"
+                },
+                {
+                    "name": "ColorThemeDark",
+                    "value": "COLOR_THEME_DARK"
+                }
+            ]
+        },
+        "slash:api:Apiv1UserSettingLocale": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "LocaleUnspecified",
+                    "value": "LOCALE_UNSPECIFIED"
+                },
+                {
+                    "name": "LocaleEn",
+                    "value": "LOCALE_EN"
+                },
+                {
+                    "name": "LocaleZh",
+                    "value": "LOCALE_ZH"
+                },
+                {
+                    "name": "LocaleFr",
+                    "value": "LOCALE_FR"
+                }
+            ]
+        },
+        "slash:api:Apiv1WorkspaceSetting": {
+            "properties": {
+                "autoBackup": {
+                    "$ref": "#/types/slash:api:Apiv1AutoBackupWorkspaceSetting"
+                },
+                "customScript": {
+                    "type": "string",
+                    "description": "The custom script."
+                },
+                "customStyle": {
+                    "type": "string",
+                    "description": "The custom style."
+                },
+                "defaultVisibility": {
+                    "$ref": "#/types/slash:api:Apiv1WorkspaceSettingDefaultVisibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                },
+                "enableSignup": {
+                    "type": "boolean",
+                    "description": "Whether to enable other users to sign up."
+                },
+                "faviconProvider": {
+                    "type": "string",
+                    "description": "The url of custom favicon provider."
+                },
+                "instanceUrl": {
+                    "type": "string",
+                    "description": "The instance URL."
+                },
+                "licenseKey": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1WorkspaceSettingDefaultVisibility": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "VisibilityUnspecified",
+                    "value": "VISIBILITY_UNSPECIFIED"
+                },
+                {
+                    "name": "Private",
+                    "value": "PRIVATE"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "WORKSPACE"
+                },
+                {
+                    "name": "Public",
+                    "value": "PUBLIC"
+                }
+            ]
+        },
+        "slash:api:GetShortcutAnalyticsResponseAnalyticsItem": {
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Role": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RoleUnspecified",
+                    "value": "ROLE_UNSPECIFIED"
+                },
+                {
+                    "name": "Admin",
+                    "value": "ADMIN"
+                },
+                {
+                    "name": "User",
+                    "value": "USER"
+                }
+            ]
+        },
+        "slash:api:RowStatus": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RowStatusUnspecified",
+                    "value": "ROW_STATUS_UNSPECIFIED"
+                },
+                {
+                    "name": "Normal",
+                    "value": "NORMAL"
+                },
+                {
+                    "name": "Archived",
+                    "value": "ARCHIVED"
+                }
+            ]
+        },
+        "slash:api:V1GetCollectionResponse": {
+            "properties": {
+                "collection": {
+                    "$ref": "#/types/slash:api:Apiv1Collection"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1GetShortcutAnalyticsResponse": {
+            "properties": {
+                "browsers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:GetShortcutAnalyticsResponseAnalyticsItem"
+                    }
+                },
+                "devices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:GetShortcutAnalyticsResponseAnalyticsItem"
+                    }
+                },
+                "references": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:GetShortcutAnalyticsResponseAnalyticsItem"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1GetShortcutResponse": {
+            "properties": {
+                "shortcut": {
+                    "$ref": "#/types/slash:api:Apiv1Shortcut"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1GetUserResponse": {
+            "properties": {
+                "user": {
+                    "$ref": "#/types/slash:api:V1User"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1GetUserSettingResponse": {
+            "properties": {
+                "userSetting": {
+                    "$ref": "#/types/slash:api:Apiv1UserSetting"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1GetWorkspaceProfileResponse": {
+            "properties": {
+                "profile": {
+                    "$ref": "#/types/slash:api:V1WorkspaceProfile"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1GetWorkspaceSettingResponse": {
+            "properties": {
+                "setting": {
+                    "$ref": "#/types/slash:api:Apiv1WorkspaceSetting"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1ListCollectionsResponse": {
+            "properties": {
+                "collections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:Apiv1Collection"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1ListShortcutsResponse": {
+            "properties": {
+                "shortcuts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:Apiv1Shortcut"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1ListUserAccessTokensResponse": {
+            "properties": {
+                "accessTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:V1UserAccessToken"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1ListUsersResponse": {
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:V1User"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1User": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/types/slash:api:V1UserRole",
+                    "default": "ROLE_UNSPECIFIED"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:V1UserRowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "updatedTime": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1UserAccessToken": {
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "expiresAt": {
+                    "type": "string"
+                },
+                "issuedAt": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1UserRole": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RoleUnspecified",
+                    "value": "ROLE_UNSPECIFIED"
+                },
+                {
+                    "name": "Admin",
+                    "value": "ADMIN"
+                },
+                {
+                    "name": "User",
+                    "value": "USER"
+                }
+            ]
+        },
+        "slash:api:V1UserRowStatus": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RowStatusUnspecified",
+                    "value": "ROW_STATUS_UNSPECIFIED"
+                },
+                {
+                    "name": "Normal",
+                    "value": "NORMAL"
+                },
+                {
+                    "name": "Archived",
+                    "value": "ARCHIVED"
+                }
+            ]
+        },
+        "slash:api:V1WorkspaceProfile": {
+            "properties": {
+                "customScript": {
+                    "type": "string",
+                    "description": "The custom script."
+                },
+                "customStyle": {
+                    "type": "string",
+                    "description": "The custom style."
+                },
+                "enableSignup": {
+                    "type": "boolean",
+                    "description": "Whether to enable other users to sign up."
+                },
+                "faviconProvider": {
+                    "type": "string",
+                    "description": "The url of custom favicon provider."
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Current workspace mode: dev, prod."
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "plan": {
+                    "$ref": "#/types/slash:api:V1WorkspaceProfilePlan",
+                    "default": "PLAN_TYPE_UNSPECIFIED"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current workspace version."
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1WorkspaceProfilePlan": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "PlanTypeUnspecified",
+                    "value": "PLAN_TYPE_UNSPECIFIED"
+                },
+                {
+                    "name": "Free",
+                    "value": "FREE"
+                },
+                {
+                    "name": "Pro",
+                    "value": "PRO"
+                }
+            ]
+        },
+        "slash:api:Visibility": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "VisibilityUnspecified",
+                    "value": "VISIBILITY_UNSPECIFIED"
+                },
+                {
+                    "name": "Private",
+                    "value": "PRIVATE"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "WORKSPACE"
+                },
+                {
+                    "name": "Public",
+                    "value": "PUBLIC"
+                }
+            ]
+        },
+        "slash:subscription/v1:V1GetSubscriptionResponse": {
+            "properties": {
+                "subscription": {
+                    "$ref": "#/types/slash:subscription/v1:V1Subscription"
+                }
+            },
+            "type": "object"
+        },
+        "slash:subscription/v1:V1Subscription": {
+            "properties": {
+                "expiresTime": {
+                    "type": "string"
+                },
+                "plan": {
+                    "$ref": "#/types/slash:subscription/v1:V1SubscriptionPlan",
+                    "default": "PLAN_TYPE_UNSPECIFIED"
+                },
+                "startedTime": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:subscription/v1:V1SubscriptionPlan": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "PlanTypeUnspecified",
+                    "value": "PLAN_TYPE_UNSPECIFIED"
+                },
+                {
+                    "name": "Free",
+                    "value": "FREE"
+                },
+                {
+                    "name": "Pro",
+                    "value": "PRO"
+                }
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the Slash package.",
+        "type": "object",
+        "inputProperties": {
+            "apiKey": {
+                "type": "string",
+                "description": "The Slash API key.",
+                "defaultInfo": {
+                    "environment": [
+                        "SLASH_APIKEY"
+                    ]
+                },
+                "language": {
+                    "csharp": {
+                        "name": "ApiKey"
+                    }
+                },
+                "secret": true
+            }
+        }
+    },
+    "resources": {
+        "slash:api:CollectionServiceCollection": {
+            "properties": {
+                "collection": {
+                    "$ref": "#/types/slash:api:Apiv1Collection"
+                },
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortcutIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Visibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            },
+            "type": "object",
+            "inputProperties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortcutIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Visibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            }
+        },
+        "slash:api:ShortcutServiceShortcut": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ogMetadata": {
+                    "$ref": "#/types/slash:api:Apiv1OpenGraphMetadata"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:RowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "shortcut": {
+                    "$ref": "#/types/slash:api:Apiv1Shortcut"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "viewCount": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Visibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            },
+            "type": "object",
+            "inputProperties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ogMetadata": {
+                    "$ref": "#/types/slash:api:Apiv1OpenGraphMetadata"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:RowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "viewCount": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Visibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            }
+        },
+        "slash:api:UserServiceUser": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/types/slash:api:Role",
+                    "default": "ROLE_UNSPECIFIED"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:RowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "#/types/slash:api:V1User"
+                }
+            },
+            "type": "object",
+            "inputProperties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/types/slash:api:Role",
+                    "default": "ROLE_UNSPECIFIED"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:RowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "updatedTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "slash:api:UserServiceUserAccessToken": {
+            "properties": {
+                "accessToken": {
+                    "$ref": "#/types/slash:api:V1UserAccessToken"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description is the description of the access token."
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "expires_at is the expiration time of the access token.\nIf expires_at is not set, the access token will never expire."
+                }
+            },
+            "type": "object",
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description is the description of the access token."
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "expires_at is the expiration time of the access token.\nIf expires_at is not set, the access token will never expire."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id is the user id."
+                }
+            }
+        }
+    },
+    "functions": {
+        "slash:api:getCollectionServiceCollection": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetCollectionResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:getShortcutServiceShortcut": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetShortcutResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:getShortcutServiceShortcutAnalytic": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetShortcutAnalyticsResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:getUserServiceUser": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetUserResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:getUserSettingServiceUserSetting": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id is the user id."
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetUserSettingResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:getWorkspaceServiceWorkspaceProfile": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetWorkspaceProfileResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:getWorkspaceServiceWorkspaceSetting": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetWorkspaceSettingResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:listCollectionServiceCollections": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1ListCollectionsResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:listShortcutServiceShortcuts": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1ListShortcutsResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:listUserServiceUserAccessTokens": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id is the user id."
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1ListUserAccessTokensResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:listUserServiceUsers": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1ListUsersResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:subscription/v1:getSubscriptionServiceSubscription": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:subscription/v1:V1GetSubscriptionResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        }
+    }
+}
