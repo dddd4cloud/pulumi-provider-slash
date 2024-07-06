@@ -19,7 +19,7 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/cloudy-sky-software/pulumi-slash/provider/pkg/version.Version={{.Tag }}
+      - -X github.com/dddd4cloud/pulumi-provider-slash/provider/pkg/version.Version={{.Tag }}
 checksum:
   name_template: "{{ .ProjectName }}_linux_windows_checksums.txt"
 changelog:
@@ -28,6 +28,6 @@ release:
   disable: false
   prerelease: auto
   header: |
-    See [CHANGELOG.md](https://github.com/cloudy-sky-software/pulumi-slash/blob/main/CHANGELOG.md)
+    See [CHANGELOG.md](https://github.com/dddd4cloud/pulumi-provider-slash/blob/main/CHANGELOG.md)
 snapshot:
   name_template: "{{ .Tag }}-SNAPSHOT"

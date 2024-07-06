@@ -14,7 +14,7 @@ import (
 
 	openapigen "github.com/cloudy-sky-software/pulschema/pkg"
 
-	"github.com/cloudy-sky-software/pulumi-slash/provider/pkg/gen/examples"
+	"github.com/dddd4cloud/pulumi-provider-slash/provider/pkg/gen/examples"
 )
 
 const packageName = "slash"
@@ -34,7 +34,7 @@ func PulumiSchema(openapiDoc openapi3.T) (pschema.PackageSpec, openapigen.Provid
 		},
 		Homepage:   "https://cloudysky.software",
 		Publisher:  "Cloudy Sky Software",
-		Repository: "https://github.com/cloudy-sky-software/pulumi-slash",
+		Repository: "https://github.com/dddd4cloud/pulumi-provider-slash",
 
 		Config: pschema.ConfigSpec{
 			Variables: map[string]pschema.PropertySpec{
@@ -75,7 +75,7 @@ func PulumiSchema(openapiDoc openapi3.T) (pschema.PackageSpec, openapigen.Provid
 			},
 		},
 
-		PluginDownloadURL: "github://api.github.com/cloudy-sky-software/pulumi-slash",
+		PluginDownloadURL: "github://api.github.com/dddd4cloud/pulumi-provider-slash",
 		Types:             map[string]pschema.ComplexTypeSpec{},
 		Resources:         map[string]pschema.ResourceSpec{},
 		Functions:         map[string]pschema.FunctionSpec{},
@@ -94,7 +94,7 @@ func PulumiSchema(openapiDoc openapi3.T) (pschema.PackageSpec, openapigen.Provid
 		ExcludedPaths: []string{},
 	}
 
-	providerMetadata, updatedOpenAPIDoc, err := openAPICtx.GatherResourcesFromAPI(csharpNamespaces)
+	providerMetadata, _, err := openAPICtx.GatherResourcesFromAPI(csharpNamespaces)
 	if err != nil {
 		contract.Failf("generating resources from OpenAPI spec: %v", err)
 	}
@@ -118,7 +118,7 @@ func PulumiSchema(openapiDoc openapi3.T) (pschema.PackageSpec, openapigen.Provid
 	})
 
 	pkg.Language["go"] = rawMessage(map[string]interface{}{
-		"importBasePath": "github.com/cloudy-sky-software/pulumi-slash/sdk/go/slash",
+		"importBasePath": "github.com/dddd4cloud/pulumi-provider-slash/sdk/go/slash",
 	})
 	pkg.Language["nodejs"] = rawMessage(map[string]interface{}{
 		"packageName": "@cloudyskysoftware/pulumi-slash",
@@ -140,7 +140,7 @@ func PulumiSchema(openapiDoc openapi3.T) (pschema.PackageSpec, openapigen.Provid
 		APIToSDKNameMap:  providerMetadata.APIToSDKNameMap,
 		PathParamNameMap: providerMetadata.PathParamNameMap,
 	}
-	return pkg, metadata, updatedOpenAPIDoc
+	return pkg, metadata
 }
 
 func rawMessage(v interface{}) pschema.RawMessage {

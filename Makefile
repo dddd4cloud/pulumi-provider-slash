@@ -1,10 +1,10 @@
 PROJECT_NAME := Pulumi Slash Resource Provider
 
-SHELL = /bin/bash
+SHELL = /bin/zsh
 
 PACK             := slash
 PACKDIR          := sdk
-PROJECT          := github.com/cloudy-sky-software/pulumi-slash
+PROJECT          := github.com/dddd4cloud/pulumi-provider-slash
 NODE_MODULE_NAME := @cloudyskysoftware/pulumi-slash
 NUGET_PKG_NAME   := Pulumi.Slash
 
@@ -20,6 +20,9 @@ GOPATH			:= $(shell go env GOPATH)
 WORKING_DIR     := $(shell pwd)
 TESTPARALLELISM := 4
 
+
+test::
+	echo $(WORKING_DIR)/bin/$(CODEGEN)
 ensure::
 	cd provider && GO111MODULE=on go mod tidy
 	cd sdk && GO111MODULE=on go mod tidy
