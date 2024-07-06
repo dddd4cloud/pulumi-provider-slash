@@ -71,15 +71,15 @@ python_sdk::
 	rm -rf sdk/python
 	$(WORKING_DIR)/bin/$(CODEGEN) -version=${VERSION} python $(SCHEMA_FILE) $(CURDIR)
 	cp README.md ${PACKDIR}/python/
-	cd ${PACKDIR}/python/ && \
-		python3 setup.py clean --all 2>/dev/null && \
-		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
-		rm ./bin/setup.py.bak && \
-		cd ./bin && python3 setup.py build sdist
+# cd ${PACKDIR}/python/ && \
+# 	python3 setup.py clean --all 2>/dev/null && \
+# 	rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+# 	sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
+# 	rm ./bin/setup.py.bak && \
+# 	cd ./bin && python3 setup.py build sdist
 
 .PHONY: build
-build:: gen provider dotnet_sdk go_sdk nodejs_sdk python_sdk
+build:: gen generate_schema provider go_sdk python_sdk
 
 # Required for the codegen action that runs in pulumi/pulumi
 only_build:: build
@@ -90,7 +90,7 @@ lint::
 	done
 
 
-install:: install_nodejs_sdk install_dotnet_sdk
+install:: 
 	cp $(WORKING_DIR)/bin/${PROVIDER} ${GOPATH}/bin
 
 
