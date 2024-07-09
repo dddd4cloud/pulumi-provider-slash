@@ -20,9 +20,6 @@ GOPATH			:= $(shell go env GOPATH)
 WORKING_DIR     := $(shell pwd)
 TESTPARALLELISM := 4
 
-
-test::
-	echo $(WORKING_DIR)/bin/$(CODEGEN)
 ensure::
 	cd provider && GO111MODULE=on go mod tidy
 	cd sdk && GO111MODULE=on go mod tidy
@@ -72,14 +69,14 @@ python_sdk::
 	$(WORKING_DIR)/bin/$(CODEGEN) -version=${VERSION} python $(SCHEMA_FILE) $(CURDIR)
 	cp README.md ${PACKDIR}/python/
 # cd ${PACKDIR}/python/ && \
-# 	python3 setup.py clean --all 2>/dev/null && \
+# 	poetry run python setup.py clean --all 2>/dev/null && \
 # 	rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
 # 	sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
 # 	rm ./bin/setup.py.bak && \
-# 	cd ./bin && python3 setup.py build sdist
+# 	cd ./bin && poetry run python setup.py build sdist
 
 .PHONY: build
-build:: gen generate_schema provider go_sdk python_sdk
+build:: gen provider go_sdk nodejs_sdk python_sdk
 
 # Required for the codegen action that runs in pulumi/pulumi
 only_build:: build
@@ -90,7 +87,7 @@ lint::
 	done
 
 
-install:: 
+install:: install_nodejs_sdk
 	cp $(WORKING_DIR)/bin/${PROVIDER} ${GOPATH}/bin
 
 
@@ -103,13 +100,7 @@ test_all::
 	cd provider/pkg && $(GO_TEST) ./...
 	cd tests/sdk/nodejs && $(GO_TEST) ./...
 	cd tests/sdk/python && $(GO_TEST) ./...
-	cd tests/sdk/dotnet && $(GO_TEST) ./...
 	cd tests/sdk/go && $(GO_TEST) ./...
-
-install_dotnet_sdk::
-	rm -rf $(WORKING_DIR)/nuget/$(NUGET_PKG_NAME).*.nupkg
-	mkdir -p $(WORKING_DIR)/nuget
-	find . -name '*.nupkg' -print -exec cp -p {} ${WORKING_DIR}/nuget \;
 
 install_python_sdk::
 	#target intentionally blank
