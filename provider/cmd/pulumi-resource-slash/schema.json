@@ -1,0 +1,370 @@
+{
+    "name": "slash",
+    "displayName": "Slash",
+    "description": "A Pulumi package for creating and managing Slash resources.",
+    "keywords": [
+        "pulumi",
+        "slash",
+        "category/cloud",
+        "kind/native"
+    ],
+    "homepage": "https://cloudysky.software",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/dddd4cloud/pulumi-provider-slash",
+    "pluginDownloadURL": "github://api.github.com/dddd4cloud/pulumi-provider-slash",
+    "publisher": "Cloudy Sky Software",
+    "language": {
+        "csharp": {
+            "namespaces": {
+                "": "Provider",
+                "api": "Api",
+                "slash": "SLASH"
+            },
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "rootNamespace": "Pulumi"
+        },
+        "go": {
+            "importBasePath": "github.com/dddd4cloud/pulumi-provider-slash/sdk/go/slash"
+        },
+        "nodejs": {
+            "packageName": "@cloudyskysoftware/pulumi-slash"
+        },
+        "python": {
+            "packageName": "pulumi_slash",
+            "pyproject": {
+                "enabled": true
+            },
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiKey": {
+                "type": "string",
+                "description": "The API key",
+                "language": {
+                    "csharp": {
+                        "name": "ApiKey"
+                    }
+                },
+                "secret": true
+            }
+        }
+    },
+    "types": {
+        "slash:api:Apiv1OpenGraphMetadata": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1Shortcut": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ogMetadata": {
+                    "$ref": "#/types/slash:api:Apiv1OpenGraphMetadata"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:Apiv1ShortcutRowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "viewCount": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Apiv1ShortcutVisibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Apiv1ShortcutRowStatus": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RowStatusUnspecified",
+                    "value": "ROW_STATUS_UNSPECIFIED"
+                },
+                {
+                    "name": "Normal",
+                    "value": "NORMAL"
+                },
+                {
+                    "name": "Archived",
+                    "value": "ARCHIVED"
+                }
+            ]
+        },
+        "slash:api:Apiv1ShortcutVisibility": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "VisibilityUnspecified",
+                    "value": "VISIBILITY_UNSPECIFIED"
+                },
+                {
+                    "name": "Private",
+                    "value": "PRIVATE"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "WORKSPACE"
+                },
+                {
+                    "name": "Public",
+                    "value": "PUBLIC"
+                }
+            ]
+        },
+        "slash:api:RowStatus": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RowStatusUnspecified",
+                    "value": "ROW_STATUS_UNSPECIFIED"
+                },
+                {
+                    "name": "Normal",
+                    "value": "NORMAL"
+                },
+                {
+                    "name": "Archived",
+                    "value": "ARCHIVED"
+                }
+            ]
+        },
+        "slash:api:V1GetShortcutResponse": {
+            "properties": {
+                "shortcut": {
+                    "$ref": "#/types/slash:api:Apiv1Shortcut"
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:V1ListShortcutsResponse": {
+            "properties": {
+                "shortcuts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/slash:api:Apiv1Shortcut"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "slash:api:Visibility": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "VisibilityUnspecified",
+                    "value": "VISIBILITY_UNSPECIFIED"
+                },
+                {
+                    "name": "Private",
+                    "value": "PRIVATE"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "WORKSPACE"
+                },
+                {
+                    "name": "Public",
+                    "value": "PUBLIC"
+                }
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the Slash package.",
+        "type": "object",
+        "inputProperties": {
+            "apiKey": {
+                "type": "string",
+                "description": "The Slash API key.",
+                "defaultInfo": {
+                    "environment": [
+                        "SLASH_APIKEY"
+                    ]
+                },
+                "language": {
+                    "csharp": {
+                        "name": "ApiKey"
+                    }
+                },
+                "secret": true
+            }
+        }
+    },
+    "resources": {
+        "slash:api:ShortcutServiceShortcut": {
+            "properties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ogMetadata": {
+                    "$ref": "#/types/slash:api:Apiv1OpenGraphMetadata"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:RowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "shortcut": {
+                    "$ref": "#/types/slash:api:Apiv1Shortcut"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "viewCount": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Visibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            },
+            "type": "object",
+            "inputProperties": {
+                "createdTime": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ogMetadata": {
+                    "$ref": "#/types/slash:api:Apiv1OpenGraphMetadata"
+                },
+                "rowStatus": {
+                    "$ref": "#/types/slash:api:RowStatus",
+                    "default": "ROW_STATUS_UNSPECIFIED"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "string"
+                },
+                "viewCount": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "$ref": "#/types/slash:api:Visibility",
+                    "default": "VISIBILITY_UNSPECIFIED"
+                }
+            }
+        }
+    },
+    "functions": {
+        "slash:api:getShortcutServiceShortcut": {
+            "inputs": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1GetShortcutResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        },
+        "slash:api:listShortcutServiceShortcuts": {
+            "inputs": {},
+            "outputs": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/slash:api:V1ListShortcutsResponse"
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            }
+        }
+    }
+}

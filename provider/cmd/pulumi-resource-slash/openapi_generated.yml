@@ -1,0 +1,212 @@
+openapi: 3.0.1
+components:
+  schemas:
+    apiv1OpenGraphMetadata:
+      properties:
+        description:
+          type: string
+        image:
+          type: string
+        title:
+          type: string
+      type: object
+    apiv1RowStatus:
+      default: ROW_STATUS_UNSPECIFIED
+      enum:
+      - ROW_STATUS_UNSPECIFIED
+      - NORMAL
+      - ARCHIVED
+      type: string
+    apiv1Shortcut:
+      properties:
+        createdTime:
+          format: date-time
+          type: string
+        creatorId:
+          format: int32
+          type: integer
+        description:
+          type: string
+        id:
+          format: int32
+          type: integer
+        link:
+          type: string
+        name:
+          type: string
+        ogMetadata:
+          $ref: '#/components/schemas/apiv1OpenGraphMetadata'
+        rowStatus:
+          $ref: '#/components/schemas/apiv1RowStatus'
+        tags:
+          items:
+            type: string
+          type: array
+        title:
+          type: string
+        updatedTime:
+          format: date-time
+          type: string
+        viewCount:
+          format: int32
+          type: integer
+        visibility:
+          $ref: '#/components/schemas/apiv1Visibility'
+      type: object
+    apiv1Visibility:
+      default: VISIBILITY_UNSPECIFIED
+      enum:
+      - VISIBILITY_UNSPECIFIED
+      - PRIVATE
+      - WORKSPACE
+      - PUBLIC
+      type: string
+    protobufAny:
+      additionalProperties:
+        type: object
+      properties:
+        '@type':
+          type: string
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        message:
+          type: string
+      type: object
+    v1CreateShortcutResponse:
+      properties:
+        shortcut:
+          $ref: '#/components/schemas/apiv1Shortcut'
+      type: object
+    v1DeleteShortcutResponse:
+      type: object
+    v1GetShortcutResponse:
+      properties:
+        shortcut:
+          $ref: '#/components/schemas/apiv1Shortcut'
+      type: object
+    v1ListShortcutsResponse:
+      properties:
+        shortcuts:
+          items:
+            $ref: '#/components/schemas/apiv1Shortcut'
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+info:
+  title: slash
+  version: 1.0.0
+paths:
+  /api/v1/shortcuts:
+    get:
+      operationId: ShortcutService_ListShortcuts
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListShortcutsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListShortcuts returns a list of shortcuts.
+      tags:
+      - ShortcutService
+    post:
+      operationId: ShortcutService_CreateShortcut
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiv1Shortcut'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CreateShortcutResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: CreateShortcut creates a shortcut.
+      tags:
+      - ShortcutService
+      x-codegen-request-body-name: shortcut
+  /api/v1/shortcuts/{id}:
+    delete:
+      operationId: ShortcutService_DeleteShortcut
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeleteShortcutResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: DeleteShortcut deletes a shortcut by name.
+      tags:
+      - ShortcutService
+      x-codegen-request-body-name: shortcut
+    get:
+      operationId: ShortcutService_GetShortcut
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetShortcutResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: GetShortcut returns a shortcut by id.
+      tags:
+      - ShortcutService
+security:
+- bearerAuth: []
+servers:
+- url: https://slash.vpc.run
+tags:
+- name: ShortcutService

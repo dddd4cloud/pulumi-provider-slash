@@ -4,5 +4,8 @@
       "GOPRIVATE": "github.com/cloudy-sky-software/*",
       "GO111MODULE": "on"
     }
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json": "file:///Users/me2/Development/async-slash/pulumi-provider-slash/provider/cmd/pulumi-gen-slash/_openapi.yml"
   }
 }
