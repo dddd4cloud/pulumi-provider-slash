@@ -10,12 +10,12 @@ resources:
   shortcut1:
     type: slash:api:ShortcutServiceShortcut
     properties:
-      name: test9
+      name: test99
       link: https://google.de
-  shortcut2:
-    type: slash:api:ShortcutServiceShortcut
-    get:
-      id: "7"
+  # shortcut2:
+  #   type: slash:api:ShortcutServiceShortcut
+  #   get:
+  #     id: "7"
 
 outputs:
-  link: ${shortcut2}
+  link: ${shortcut1.id}

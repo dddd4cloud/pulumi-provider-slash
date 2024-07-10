@@ -68,12 +68,12 @@ python_sdk::
 	rm -rf sdk/python
 	$(WORKING_DIR)/bin/$(CODEGEN) -version=${VERSION} python $(SCHEMA_FILE) $(CURDIR)
 	cp README.md ${PACKDIR}/python/
-# cd ${PACKDIR}/python/ && \
-# 	poetry run python setup.py clean --all 2>/dev/null && \
-# 	rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-# 	sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
-# 	rm ./bin/setup.py.bak && \
-# 	cd ./bin && poetry run python setup.py build sdist
+	cd ${PACKDIR}/python/ && \
+		poetry run python setup.py clean --all 2>/dev/null && \
+		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
+		rm ./bin/setup.py.bak && \
+		cd ./bin && poetry run python setup.py build sdist
 
 .PHONY: build
 build:: gen provider go_sdk nodejs_sdk python_sdk
