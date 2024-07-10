@@ -1,0 +1,25 @@
+name: project
+runtime:
+  name: yaml
+description: A minimal Python Pulumi program
+
+resources:
+  shortcut1:
+    type: slash:api:ShortcutServiceShortcut
+    properties:
+      name: test
+      link: https://google.de
+  shortcut2:
+    type: slash:api:ShortcutServiceShortcut
+    properties:
+      name: test2
+      link: https://google.com
+  collection:
+    type: slash:api:CollectionServiceCollection
+    properties:
+      name: test2
+      title: test2
+      visibility: PRIVATE
+
+outputs:
+  url: http://${shortcut1}
