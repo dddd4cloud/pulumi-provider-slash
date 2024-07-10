@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "slash",
-  "server": "github://api.github.com/dddd4cloud/pulumi-provider-slash"
-}

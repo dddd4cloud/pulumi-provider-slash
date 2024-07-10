@@ -57,14 +57,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/rpcStatus"
       x-codegen-request-body-name: collection
-  /api/v1/collections/{collectionId}:
+  /api/v1/collections/{id}:
     put:
       tags:
         - CollectionService
       summary: UpdateCollection updates a collection.
       operationId: CollectionService_UpdateCollection
       parameters:
-        - name: collectionId
+        - name: id
           in: path
           required: true
           schema:
@@ -95,7 +95,7 @@ paths:
                   type: string
                 description:
                   type: string
-                shortcutIds:
+                ids:
                   type: array
                   items:
                     type: integer
@@ -123,7 +123,7 @@ paths:
       summary: GetCollection returns a collection by id.
       operationId: CollectionService_GetCollection
       parameters:
-        - name: collectionId
+        - name: id
           in: path
           required: true
           schema:
@@ -148,7 +148,7 @@ paths:
       summary: DeleteCollection deletes a collection by id.
       operationId: CollectionService_DeleteCollection
       parameters:
-        - name: collectionId
+        - name: id
           in: path
           required: true
           schema:
@@ -211,14 +211,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/rpcStatus"
       x-codegen-request-body-name: shortcut
-  /api/v1/shortcuts/{shortcutId}:
+  /api/v1/shortcuts/{id}:
     get:
       tags:
         - ShortcutService
       summary: GetShortcut returns a shortcut by id.
       operationId: ShortcutService_GetShortcut
       parameters:
-        - name: shortcutId
+        - name: id
           in: path
           required: true
           schema:
@@ -243,7 +243,7 @@ paths:
       summary: DeleteShortcut deletes a shortcut by name.
       operationId: ShortcutService_DeleteShortcut
       parameters:
-        - name: shortcutId
+        - name: id
           in: path
           required: true
           schema:
@@ -268,7 +268,7 @@ paths:
       summary: UpdateShortcut updates a shortcut.
       operationId: ShortcutService_UpdateShortcut
       parameters:
-        - name: shortcutId
+        - name: id
           in: path
           required: true
           schema:
@@ -805,7 +805,7 @@ components:
           type: string
         description:
           type: string
-        shortcutIds:
+        ids:
           type: array
           items:
             type: integer
