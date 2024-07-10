@@ -24,18 +24,18 @@ components:
     UserSettingColorTheme:
       default: COLOR_THEME_UNSPECIFIED
       enum:
-      - COLOR_THEME_UNSPECIFIED
-      - COLOR_THEME_SYSTEM
-      - COLOR_THEME_LIGHT
-      - COLOR_THEME_DARK
+        - COLOR_THEME_UNSPECIFIED
+        - COLOR_THEME_SYSTEM
+        - COLOR_THEME_LIGHT
+        - COLOR_THEME_DARK
       type: string
     UserSettingLocale:
       default: LOCALE_UNSPECIFIED
       enum:
-      - LOCALE_UNSPECIFIED
-      - LOCALE_EN
-      - LOCALE_ZH
-      - LOCALE_FR
+        - LOCALE_UNSPECIFIED
+        - LOCALE_EN
+        - LOCALE_ZH
+        - LOCALE_FR
       type: string
     apiv1AutoBackupWorkspaceSetting:
       properties:
@@ -79,7 +79,7 @@ components:
           format: date-time
           type: string
         visibility:
-          $ref: '#/components/schemas/apiv1Visibility'
+          $ref: "#/components/schemas/apiv1Visibility"
       type: object
     apiv1OpenGraphMetadata:
       properties:
@@ -93,9 +93,9 @@ components:
     apiv1RowStatus:
       default: ROW_STATUS_UNSPECIFIED
       enum:
-      - ROW_STATUS_UNSPECIFIED
-      - NORMAL
-      - ARCHIVED
+        - ROW_STATUS_UNSPECIFIED
+        - NORMAL
+        - ARCHIVED
       type: string
     apiv1Shortcut:
       properties:
@@ -115,9 +115,9 @@ components:
         name:
           type: string
         ogMetadata:
-          $ref: '#/components/schemas/apiv1OpenGraphMetadata'
+          $ref: "#/components/schemas/apiv1OpenGraphMetadata"
         rowStatus:
-          $ref: '#/components/schemas/apiv1RowStatus'
+          $ref: "#/components/schemas/apiv1RowStatus"
         tags:
           items:
             type: string
@@ -131,31 +131,31 @@ components:
           format: int32
           type: integer
         visibility:
-          $ref: '#/components/schemas/apiv1Visibility'
+          $ref: "#/components/schemas/apiv1Visibility"
       type: object
     apiv1UserSetting:
       properties:
         colorTheme:
-          $ref: '#/components/schemas/UserSettingColorTheme'
+          $ref: "#/components/schemas/UserSettingColorTheme"
         id:
           description: id is the user id.
           format: int32
           type: integer
         locale:
-          $ref: '#/components/schemas/UserSettingLocale'
+          $ref: "#/components/schemas/UserSettingLocale"
       type: object
     apiv1Visibility:
       default: VISIBILITY_UNSPECIFIED
       enum:
-      - VISIBILITY_UNSPECIFIED
-      - PRIVATE
-      - WORKSPACE
-      - PUBLIC
+        - VISIBILITY_UNSPECIFIED
+        - PRIVATE
+        - WORKSPACE
+        - PUBLIC
       type: string
     apiv1WorkspaceSetting:
       properties:
         autoBackup:
-          $ref: '#/components/schemas/apiv1AutoBackupWorkspaceSetting'
+          $ref: "#/components/schemas/apiv1AutoBackupWorkspaceSetting"
         customScript:
           description: The custom script.
           type: string
@@ -163,7 +163,7 @@ components:
           description: The custom style.
           type: string
         defaultVisibility:
-          $ref: '#/components/schemas/apiv1Visibility'
+          $ref: "#/components/schemas/apiv1Visibility"
         enableSignup:
           description: Whether to enable other users to sign up.
           type: boolean
@@ -180,7 +180,7 @@ components:
       additionalProperties:
         type: object
       properties:
-        '@type':
+        "@type":
           type: string
       type: object
     rpcStatus:
@@ -190,7 +190,7 @@ components:
           type: integer
         details:
           items:
-            $ref: '#/components/schemas/protobufAny'
+            $ref: "#/components/schemas/protobufAny"
           type: array
         message:
           type: string
@@ -198,22 +198,22 @@ components:
     v1CreateCollectionResponse:
       properties:
         collection:
-          $ref: '#/components/schemas/apiv1Collection'
+          $ref: "#/components/schemas/apiv1Collection"
       type: object
     v1CreateShortcutResponse:
       properties:
         shortcut:
-          $ref: '#/components/schemas/apiv1Shortcut'
+          $ref: "#/components/schemas/apiv1Shortcut"
       type: object
     v1CreateUserAccessTokenResponse:
       properties:
         accessToken:
-          $ref: '#/components/schemas/v1UserAccessToken'
+          $ref: "#/components/schemas/v1UserAccessToken"
       type: object
     v1CreateUserResponse:
       properties:
         user:
-          $ref: '#/components/schemas/v1User'
+          $ref: "#/components/schemas/v1User"
       type: object
     v1DeleteCollectionResponse:
       type: object
@@ -226,94 +226,94 @@ components:
     v1GetCollectionResponse:
       properties:
         collection:
-          $ref: '#/components/schemas/apiv1Collection'
+          $ref: "#/components/schemas/apiv1Collection"
       type: object
     v1GetShortcutAnalyticsResponse:
       properties:
         browsers:
           items:
-            $ref: '#/components/schemas/GetShortcutAnalyticsResponseAnalyticsItem'
+            $ref: "#/components/schemas/GetShortcutAnalyticsResponseAnalyticsItem"
           type: array
         devices:
           items:
-            $ref: '#/components/schemas/GetShortcutAnalyticsResponseAnalyticsItem'
+            $ref: "#/components/schemas/GetShortcutAnalyticsResponseAnalyticsItem"
           type: array
         references:
           items:
-            $ref: '#/components/schemas/GetShortcutAnalyticsResponseAnalyticsItem'
+            $ref: "#/components/schemas/GetShortcutAnalyticsResponseAnalyticsItem"
           type: array
       type: object
     v1GetShortcutResponse:
       properties:
         shortcut:
-          $ref: '#/components/schemas/apiv1Shortcut'
+          $ref: "#/components/schemas/apiv1Shortcut"
       type: object
     v1GetSubscriptionResponse:
       properties:
         subscription:
-          $ref: '#/components/schemas/v1Subscription'
+          $ref: "#/components/schemas/v1Subscription"
       type: object
     v1GetUserResponse:
       properties:
         user:
-          $ref: '#/components/schemas/v1User'
+          $ref: "#/components/schemas/v1User"
       type: object
     v1GetUserSettingResponse:
       properties:
         userSetting:
-          $ref: '#/components/schemas/apiv1UserSetting'
+          $ref: "#/components/schemas/apiv1UserSetting"
       type: object
     v1GetWorkspaceProfileResponse:
       properties:
         profile:
-          $ref: '#/components/schemas/v1WorkspaceProfile'
+          $ref: "#/components/schemas/v1WorkspaceProfile"
       type: object
     v1GetWorkspaceSettingResponse:
       properties:
         setting:
-          $ref: '#/components/schemas/apiv1WorkspaceSetting'
+          $ref: "#/components/schemas/apiv1WorkspaceSetting"
       type: object
     v1ListCollectionsResponse:
       properties:
         collections:
           items:
-            $ref: '#/components/schemas/apiv1Collection'
+            $ref: "#/components/schemas/apiv1Collection"
           type: array
       type: object
     v1ListShortcutsResponse:
       properties:
         shortcuts:
           items:
-            $ref: '#/components/schemas/apiv1Shortcut'
+            $ref: "#/components/schemas/apiv1Shortcut"
           type: array
       type: object
     v1ListUserAccessTokensResponse:
       properties:
         accessTokens:
           items:
-            $ref: '#/components/schemas/v1UserAccessToken'
+            $ref: "#/components/schemas/v1UserAccessToken"
           type: array
       type: object
     v1ListUsersResponse:
       properties:
         users:
           items:
-            $ref: '#/components/schemas/v1User'
+            $ref: "#/components/schemas/v1User"
           type: array
       type: object
     v1PlanType:
       default: PLAN_TYPE_UNSPECIFIED
       enum:
-      - PLAN_TYPE_UNSPECIFIED
-      - FREE
-      - PRO
+        - PLAN_TYPE_UNSPECIFIED
+        - FREE
+        - PRO
       type: string
     v1Role:
       default: ROLE_UNSPECIFIED
       enum:
-      - ROLE_UNSPECIFIED
-      - ADMIN
-      - USER
+        - ROLE_UNSPECIFIED
+        - ADMIN
+        - USER
       type: string
     v1Subscription:
       properties:
@@ -322,7 +322,7 @@ components:
           readOnly: true
           type: string
         plan:
-          $ref: '#/components/schemas/v1PlanType'
+          $ref: "#/components/schemas/v1PlanType"
         startedTime:
           format: date-time
           readOnly: true
@@ -331,39 +331,39 @@ components:
     v1UpdateCollectionResponse:
       properties:
         collection:
-          $ref: '#/components/schemas/apiv1Collection'
+          $ref: "#/components/schemas/apiv1Collection"
       type: object
     v1UpdateShortcutResponse:
       properties:
         shortcut:
-          $ref: '#/components/schemas/apiv1Shortcut'
+          $ref: "#/components/schemas/apiv1Shortcut"
       type: object
     v1UpdateSubscriptionRequest:
       properties:
         licenseKey:
           type: string
       required:
-      - licenseKey
+        - licenseKey
       type: object
     v1UpdateSubscriptionResponse:
       properties:
         subscription:
-          $ref: '#/components/schemas/v1Subscription'
+          $ref: "#/components/schemas/v1Subscription"
       type: object
     v1UpdateUserResponse:
       properties:
         user:
-          $ref: '#/components/schemas/v1User'
+          $ref: "#/components/schemas/v1User"
       type: object
     v1UpdateUserSettingResponse:
       properties:
         userSetting:
-          $ref: '#/components/schemas/apiv1UserSetting'
+          $ref: "#/components/schemas/apiv1UserSetting"
       type: object
     v1UpdateWorkspaceSettingResponse:
       properties:
         setting:
-          $ref: '#/components/schemas/apiv1WorkspaceSetting'
+          $ref: "#/components/schemas/apiv1WorkspaceSetting"
       type: object
     v1User:
       properties:
@@ -380,9 +380,9 @@ components:
         password:
           type: string
         role:
-          $ref: '#/components/schemas/v1Role'
+          $ref: "#/components/schemas/v1Role"
         rowStatus:
-          $ref: '#/components/schemas/apiv1RowStatus'
+          $ref: "#/components/schemas/apiv1RowStatus"
         updatedTime:
           format: date-time
           type: string
@@ -415,7 +415,7 @@ components:
           description: The url of custom favicon provider.
           type: string
         mode:
-          description: 'Current workspace mode: dev, prod.'
+          description: "Current workspace mode: dev, prod."
           type: string
         owner:
           title: |-
@@ -423,7 +423,7 @@ components:
             Format: "users/{id}"
           type: string
         plan:
-          $ref: '#/components/schemas/v1PlanType'
+          $ref: "#/components/schemas/v1PlanType"
         version:
           description: Current workspace version.
           type: string
@@ -445,106 +445,106 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1ListCollectionsResponse'
+                $ref: "#/components/schemas/v1ListCollectionsResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: ListCollections returns a list of collections.
       tags:
-      - CollectionService
+        - CollectionService
     post:
       operationId: CollectionService_CreateCollection
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/apiv1Collection'
+              $ref: "#/components/schemas/apiv1Collection"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1CreateCollectionResponse'
+                $ref: "#/components/schemas/v1CreateCollectionResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: CreateCollection creates a collection.
       tags:
-      - CollectionService
+        - CollectionService
       x-codegen-request-body-name: collection
   /api/v1/collections/{id}:
     delete:
       operationId: CollectionService_DeleteCollection
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1DeleteCollectionResponse'
+                $ref: "#/components/schemas/v1DeleteCollectionResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: DeleteCollection deletes a collection by id.
       tags:
-      - CollectionService
+        - CollectionService
     get:
       operationId: CollectionService_GetCollection
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetCollectionResponse'
+                $ref: "#/components/schemas/v1GetCollectionResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: GetCollection returns a collection by id.
       tags:
-      - CollectionService
+        - CollectionService
     put:
       operationId: CollectionService_UpdateCollection
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-      - in: query
-        name: updateMask
-        schema:
-          type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
+        - in: query
+          name: updateMask
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -571,7 +571,7 @@ paths:
                   format: date-time
                   type: string
                 visibility:
-                  $ref: '#/components/schemas/apiv1Visibility'
+                  $ref: "#/components/schemas/apiv1Visibility"
               type: object
         required: true
       responses:
@@ -579,17 +579,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1UpdateCollectionResponse'
+                $ref: "#/components/schemas/v1UpdateCollectionResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: UpdateCollection updates a collection.
       tags:
-      - CollectionService
+        - CollectionService
       x-codegen-request-body-name: collection
   /api/v1/shortcuts:
     get:
@@ -599,106 +599,106 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1ListShortcutsResponse'
+                $ref: "#/components/schemas/v1ListShortcutsResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: ListShortcuts returns a list of shortcuts.
       tags:
-      - ShortcutService
+        - ShortcutService
     post:
       operationId: ShortcutService_CreateShortcut
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/apiv1Shortcut'
+              $ref: "#/components/schemas/apiv1Shortcut"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1CreateShortcutResponse'
+                $ref: "#/components/schemas/v1CreateShortcutResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: CreateShortcut creates a shortcut.
       tags:
-      - ShortcutService
+        - ShortcutService
       x-codegen-request-body-name: shortcut
   /api/v1/shortcuts/{id}:
     delete:
       operationId: ShortcutService_DeleteShortcut
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1DeleteShortcutResponse'
+                $ref: "#/components/schemas/v1DeleteShortcutResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: DeleteShortcut deletes a shortcut by name.
       tags:
-      - ShortcutService
+        - ShortcutService
     get:
       operationId: ShortcutService_GetShortcut
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetShortcutResponse'
+                $ref: "#/components/schemas/v1GetShortcutResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: GetShortcut returns a shortcut by id.
       tags:
-      - ShortcutService
+        - ShortcutService
     put:
       operationId: ShortcutService_UpdateShortcut
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-      - in: query
-        name: updateMask
-        schema:
-          type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
+        - in: query
+          name: updateMask
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -717,9 +717,9 @@ paths:
                 name:
                   type: string
                 ogMetadata:
-                  $ref: '#/components/schemas/apiv1OpenGraphMetadata'
+                  $ref: "#/components/schemas/apiv1OpenGraphMetadata"
                 rowStatus:
-                  $ref: '#/components/schemas/apiv1RowStatus'
+                  $ref: "#/components/schemas/apiv1RowStatus"
                 tags:
                   items:
                     type: string
@@ -733,7 +733,7 @@ paths:
                   format: int32
                   type: integer
                 visibility:
-                  $ref: '#/components/schemas/apiv1Visibility'
+                  $ref: "#/components/schemas/apiv1Visibility"
               type: object
         required: true
       responses:
@@ -741,17 +741,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1UpdateShortcutResponse'
+                $ref: "#/components/schemas/v1UpdateShortcutResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: UpdateShortcut updates a shortcut.
       tags:
-      - ShortcutService
+        - ShortcutService
       x-codegen-request-body-name: shortcut
   /api/v1/users:
     get:
@@ -761,228 +761,228 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1ListUsersResponse'
+                $ref: "#/components/schemas/v1ListUsersResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: ListUsers returns a list of users.
       tags:
-      - UserService
+        - UserService
     post:
       operationId: UserService_CreateUser
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/v1User'
+              $ref: "#/components/schemas/v1User"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1CreateUserResponse'
+                $ref: "#/components/schemas/v1CreateUserResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: CreateUser creates a new user.
       tags:
-      - UserService
+        - UserService
       x-codegen-request-body-name: user
   /api/v1/users/{id}:
     delete:
       operationId: UserService_DeleteUser
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1DeleteUserResponse'
+                $ref: "#/components/schemas/v1DeleteUserResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: DeleteUser deletes a user by id.
       tags:
-      - UserService
+        - UserService
     get:
       operationId: UserService_GetUser
       parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetUserResponse'
+                $ref: "#/components/schemas/v1GetUserResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: GetUser returns a user by id.
       tags:
-      - UserService
+        - UserService
   /api/v1/users/{id}/access_tokens:
     get:
       operationId: UserService_ListUserAccessTokens
       parameters:
-      - description: id is the user id.
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - description: id is the user id.
+          in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1ListUserAccessTokensResponse'
+                $ref: "#/components/schemas/v1ListUserAccessTokensResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: ListUserAccessTokens returns a list of access tokens for a user.
       tags:
-      - UserService
+        - UserService
     post:
       operationId: UserService_CreateUserAccessToken
       parameters:
-      - description: id is the user id.
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - description: id is the user id.
+          in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserServiceCreateUserAccessTokenBody'
+              $ref: "#/components/schemas/UserServiceCreateUserAccessTokenBody"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1CreateUserAccessTokenResponse'
+                $ref: "#/components/schemas/v1CreateUserAccessTokenResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: CreateUserAccessToken creates a new access token for a user.
       tags:
-      - UserService
+        - UserService
       x-codegen-request-body-name: body
   /api/v1/users/{id}/access_tokens/{accessToken}:
     delete:
       operationId: UserService_DeleteUserAccessToken
       parameters:
-      - description: id is the user id.
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-      - description: access_token is the access token to delete.
-        in: path
-        name: accessToken
-        required: true
-        schema:
-          type: string
+        - description: id is the user id.
+          in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
+        - description: access_token is the access token to delete.
+          in: path
+          name: accessToken
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1DeleteUserAccessTokenResponse'
+                $ref: "#/components/schemas/v1DeleteUserAccessTokenResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: DeleteUserAccessToken deletes an access token for a user.
       tags:
-      - UserService
+        - UserService
   /api/v1/users/{id}/settings:
     get:
       operationId: UserSettingService_GetUserSetting
       parameters:
-      - description: id is the user id.
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - description: id is the user id.
+          in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetUserSettingResponse'
+                $ref: "#/components/schemas/v1GetUserSettingResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: GetUserSetting returns the user setting.
       tags:
-      - UserSettingService
+        - UserSettingService
     patch:
       operationId: UserSettingService_UpdateUserSetting
       parameters:
-      - description: id is the user id.
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - description: id is the user id.
+          in: path
+          name: id
+          required: true
+          schema:
+            format: int32
+            type: integer
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/apiv1UserSetting'
+              $ref: "#/components/schemas/apiv1UserSetting"
         description: user_setting is the user setting to update.
         required: true
       responses:
@@ -990,28 +990,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1UpdateUserSettingResponse'
+                $ref: "#/components/schemas/v1UpdateUserSettingResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       summary: UpdateUserSetting updates the user setting.
       tags:
-      - UserSettingService
+        - UserSettingService
       x-codegen-request-body-name: userSetting
   /api/v1/users/{userId}:
     patch:
       operationId: UserService_UpdateUser
       parameters:
-      - in: path
-        name: userId
-        required: true
-        schema:
-          format: int32
-          type: integer
+        - in: path
+          name: userId
+          required: true
+          schema:
+            format: int32
+            type: integer
       requestBody:
         content:
           application/json:
@@ -1027,9 +1027,9 @@ paths:
                 password:
                   type: string
                 role:
-                  $ref: '#/components/schemas/v1Role'
+                  $ref: "#/components/schemas/v1Role"
                 rowStatus:
-                  $ref: '#/components/schemas/apiv1RowStatus'
+                  $ref: "#/components/schemas/apiv1RowStatus"
                 updatedTime:
                   format: date-time
                   type: string
@@ -1040,16 +1040,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1UpdateUserResponse'
+                $ref: "#/components/schemas/v1UpdateUserResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       tags:
-      - UserService
+        - UserService
       x-codegen-request-body-name: user
   /api/v1/workspace/profile:
     get:
@@ -1059,16 +1059,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetWorkspaceProfileResponse'
+                $ref: "#/components/schemas/v1GetWorkspaceProfileResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       tags:
-      - WorkspaceService
+        - WorkspaceService
   /api/v1/workspace/setting:
     get:
       operationId: WorkspaceService_GetWorkspaceSetting
@@ -1077,23 +1077,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetWorkspaceSettingResponse'
+                $ref: "#/components/schemas/v1GetWorkspaceSettingResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       tags:
-      - WorkspaceService
+        - WorkspaceService
     patch:
       operationId: WorkspaceService_UpdateWorkspaceSetting
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/apiv1WorkspaceSetting'
+              $ref: "#/components/schemas/apiv1WorkspaceSetting"
         description: The user setting.
         required: true
       responses:
@@ -1101,16 +1101,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1UpdateWorkspaceSettingResponse'
+                $ref: "#/components/schemas/v1UpdateWorkspaceSettingResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       tags:
-      - WorkspaceService
+        - WorkspaceService
       x-codegen-request-body-name: setting
   /v1/subscription:
     get:
@@ -1120,48 +1120,48 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1GetSubscriptionResponse'
+                $ref: "#/components/schemas/v1GetSubscriptionResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       tags:
-      - SubscriptionService
+        - SubscriptionService
     patch:
       operationId: SubscriptionService_UpdateSubscription
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/v1UpdateSubscriptionRequest'
+              $ref: "#/components/schemas/v1UpdateSubscriptionRequest"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1UpdateSubscriptionResponse'
+                $ref: "#/components/schemas/v1UpdateSubscriptionResponse"
           description: A successful response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rpcStatus'
+                $ref: "#/components/schemas/rpcStatus"
           description: An unexpected error response.
       tags:
-      - SubscriptionService
+        - SubscriptionService
       x-codegen-request-body-name: body
 security:
-- bearerAuth: []
+  - bearerAuth: []
 servers:
-- url: https://slash.vpc.run
+  - url: https://slash.vpc.run
 tags:
-- name: UserService
-- name: CollectionService
-- name: ShortcutService
-- name: SubscriptionService
-- name: UserSettingService
-- name: WorkspaceService
+  - name: UserService
+  - name: CollectionService
+  - name: ShortcutService
+  - name: SubscriptionService
+  - name: UserSettingService
+  - name: WorkspaceService
