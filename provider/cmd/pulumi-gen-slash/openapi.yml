@@ -63,8 +63,7 @@ paths:
           in: path
           required: true
           schema:
-            type: integer
-            format: int32
+            type: string
       responses:
         "200":
           description: A successful response.
@@ -88,8 +87,7 @@ paths:
           in: path
           required: true
           schema:
-            type: integer
-            format: int32
+            type: string
       responses:
         "200":
           description: A successful response.

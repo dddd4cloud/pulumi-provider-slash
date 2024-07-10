@@ -1,1 +1,0 @@
-{"crudMap":{"slash:api:ShortcutServiceShortcut":{"c":"/api/v1/shortcuts","r":"/api/v1/shortcuts/{id}","d":"/api/v1/shortcuts/{id}"},"slash:api:getShortcutServiceShortcut":{"r":"/api/v1/shortcuts/{id}"},"slash:api:listShortcutServiceShortcuts":{"r":"/api/v1/shortcuts"}},"autoNameMap":{},"sdkToApiNameMap":{},"apiToSdkNameMap":{},"pathParamNameMap":{}}
