@@ -117,14 +117,13 @@ paths:
               schema:
                 $ref: "#/components/schemas/rpcStatus"
       x-codegen-request-body-name: collection
-  /api/v1/collections/{id}:
     get:
       tags:
         - CollectionService
       summary: GetCollection returns a collection by id.
       operationId: CollectionService_GetCollection
       parameters:
-        - name: id
+        - name: collectionId
           in: path
           required: true
           schema:
@@ -149,7 +148,7 @@ paths:
       summary: DeleteCollection deletes a collection by id.
       operationId: CollectionService_DeleteCollection
       parameters:
-        - name: id
+        - name: collectionId
           in: path
           required: true
           schema:
@@ -212,14 +211,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/rpcStatus"
       x-codegen-request-body-name: shortcut
-  /api/v1/shortcuts/{id}:
+  /api/v1/shortcuts/{shortcutId}:
     get:
       tags:
         - ShortcutService
       summary: GetShortcut returns a shortcut by id.
       operationId: ShortcutService_GetShortcut
       parameters:
-        - name: id
+        - name: shortcutId
           in: path
           required: true
           schema:
@@ -244,7 +243,7 @@ paths:
       summary: DeleteShortcut deletes a shortcut by name.
       operationId: ShortcutService_DeleteShortcut
       parameters:
-        - name: id
+        - name: shortcutId
           in: path
           required: true
           schema:
@@ -263,33 +262,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/rpcStatus"
-  /api/v1/shortcuts/{id}/analytics:
-    get:
-      tags:
-        - ShortcutService
-      summary: GetShortcutAnalytics returns the analytics for a shortcut.
-      operationId: ShortcutService_GetShortcutAnalytics
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        "200":
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1GetShortcutAnalyticsResponse"
-        "400":
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/rpcStatus"
-  /api/v1/shortcuts/{shortcutId}:
     put:
       tags:
         - ShortcutService
