@@ -1,17 +1,21 @@
-name: simple
-runtime: nodejs
-description: A simple render example
-# name: project
-# runtime:
-#   name: yaml
-# description: A minimal Python Pulumi program
+# name: simple
+# runtime: nodejs
+# description: A simple render example
+name: project
+runtime:
+  name: yaml
+description: A minimal Python Pulumi program
 
-# resources:
-#   shortcut1:
-#     type: slash:api:ShortcutServiceShortcut
-#     properties:
-#       name: test225
-#       link: https://google.de
+resources:
+  shortcut1:
+    type: slash:api:ShortcutServiceShortcut
+    properties:
+      name: test9
+      link: https://google.de
+  shortcut2:
+    type: slash:api:ShortcutServiceShortcut
+    get:
+      id: "7"
 
-# outputs:
-#   url: http://${shortcut1.url}
+outputs:
+  link: ${shortcut2}
